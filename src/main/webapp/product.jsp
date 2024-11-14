@@ -31,6 +31,7 @@
                 <%
                      DecimalFormat ftm = new DecimalFormat("#,##0");
                     int maloai = request.getParameter("maloai") == null ? 1 : Integer.parseInt(request.getParameter("maloai"));
+    // xác nhận mã loại nếu ko có mặc định sẽ chọn loại 1
                     HoaDAO hoaDAO = new HoaDAO();
                     ArrayList<Hoa> dsHoa = hoaDAO.getByCategoryId(maloai);
                     for (Hoa x : dsHoa) {
