@@ -23,7 +23,7 @@
                     if (session.getAttribute("username") != null) {
                 %>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"> Welcome <%=session.getAttribute("username")%> </a>
+                    <a  title="change password " class="nav-link" href="doimatkhau.jsp"> Welcome <%=session.getAttribute("username")%> </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="DangxuatServlet"> Logout </a>

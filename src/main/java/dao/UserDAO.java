@@ -25,7 +25,7 @@ public class UserDAO {
         conn = DbContext.getConnection();
         try {
             ps=conn.prepareStatement("select * from users where username=? and password=?");
-            ps.setString(1, username);
+            ps.setString(1,username);
             ps.setString(2, password);
             rs=ps.executeQuery();
             if (rs.next()) // có tồn tại 1 user
@@ -38,7 +38,29 @@ public class UserDAO {
         
         return tk;
     }
+    
     // thay đổi mật khẩu 
     //code
+
+    public boolean changePassword(User tk)
+    {
+     conn = DbContext.getConnection();
+   String sql = " update users set password=? where username=?";
+        try {
+            ps=conn.prepareStatement(sql);
+            ps.setString(1, tk.getPassword());
+            ps.setString(2,tk.getUsername());
+            int kq = ps.executeUpdate();
+            if (kq>0) 
+                return true;
+            
+        } catch (Exception ex) {
+            System.out.println("loi:" + ex.toString());
+        }
+        return false;
+    }
+
+   
     
+
 }
