@@ -106,8 +106,10 @@ public class HoaDAO {
             ps.setDate(5, hoa.getNgaycapnhat());
             int kq = ps.executeUpdate();
             if (kq > 0) {
+            
                 return true;
             }
+             
         } catch (Exception ex) {
             System.out.println("Loi:" + ex.toString());
         }
@@ -131,6 +133,7 @@ public class HoaDAO {
             if (kq > 0) {
                 return true;
             }
+            
         } catch (Exception ex) {
             System.out.println("Loi:" + ex.toString());
         }
@@ -166,6 +169,7 @@ public class HoaDAO {
             if (rs.next()) {
                 kq = new Hoa(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getInt(5), rs.getDate(6));
             }
+            
         } catch (Exception ex) {
             System.out.println("Loi:" + ex.toString());
         }

@@ -56,6 +56,7 @@
             <td><%=x.getMaloai()%></td>
             <td>
                 <a href="TestServlet?action=EDIT&mahoa=<%=x.getMahoa()%>" class="btn btn-secondary"> <i class="bi bi-pencil-square"></i> Sửa</a>
+                
                 <a href="TestServlet?action=DELETE&mahoa=<%=x.getMahoa()%>" class="btn btn-danger"
                    onclick="return confirm('Bạn Có Chắc Chắn Muốn Xóa Không ?')"
 
@@ -86,9 +87,8 @@
        <a class="page-link" href="TestServlet?page=<%=pageIndex>1 ? pageIndex-1 :pageIndex %>">Previous</a></li>
  <%
      for (int i = 1; i < sumOfPage ; i++) {
-             
-         
  %>
+  
     <li class="page-item <%= pageIndex==i?"active":"" %>"><a class="page-link" href="TestServlet?page=<%=i%>"><%=i%></a></li>
     <%
         }

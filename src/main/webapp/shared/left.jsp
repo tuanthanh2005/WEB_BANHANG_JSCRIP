@@ -18,9 +18,11 @@
         <ul class="list-group list-group-flush">
             <%
                 for(Loai loai : dsLoai){
+                
             %>
             <li class="list-group-item"><a class="text-decoration-none" href="product.jsp?maloai=<%=loai.getMaloai() %>">
                 <%=loai.getTenloai() %></a></li>
+              
             <%
                 }
             %>

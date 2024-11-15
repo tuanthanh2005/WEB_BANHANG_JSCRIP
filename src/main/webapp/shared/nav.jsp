@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Hoa"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container">
@@ -12,6 +14,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="product.jsp">Product</a>
+           <tr>
+     
+    </tr>
         </li>  
         <li class="nav-item">
           <a class="nav-link" href="TestServlet">Product Managementa</a> 

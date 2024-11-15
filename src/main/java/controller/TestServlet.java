@@ -18,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import model.Hoa;
 
@@ -40,9 +41,14 @@ public class TestServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html;charset=UTF-8");
-
+        HttpSession session = request.getSession();
+        if (session.getAttribute("username") == null) //chưa đăng nhập
+        {
+//chuyển tiếp đến trang login.jsp
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
         HoaDAO hoaDAO = new HoaDAO();
         LoaiDAO loaiDAO = new LoaiDAO();
 
@@ -58,6 +64,7 @@ public class TestServlet extends HttpServlet {
                 if (request.getParameter("page") != null) {
                     pageIndex = Integer.parseInt(request.getParameter("page"));
                 }
+
                 // làm tròn số trang 3,1 =4
                 int sumOfPage = (int) Math.ceil((double) hoaDAO.getAll().size() / pageSize);
                 request.setAttribute("sumOfPage", sumOfPage);
@@ -71,7 +78,7 @@ public class TestServlet extends HttpServlet {
 
                     request.setAttribute("dsLoai", loaiDAO.getAll());
                     request.getRequestDispatcher("admin/add_product.jsp").forward(request, response);
-                  
+
                 } else if (method.equals("POST")) {
                     // xử lý thêm sản phẩm
                     // b1 lấy thông tin sp cần thêm
@@ -106,7 +113,6 @@ public class TestServlet extends HttpServlet {
                     //b1 Lay thong tin san pham
                     int mahoa = Integer.parseInt(request.getParameter("mahoa"));
                     String tenhoa = request.getParameter("tenhoa");
-                   
                     double gia = Double.parseDouble(request.getParameter("gia"));
                     Part part = request.getPart("hinh");
                     int maloai = Integer.parseInt(request.getParameter("maloai"));
